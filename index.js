@@ -50,6 +50,8 @@ function fetchMovieApi(searchUrlForMovie) {
 
 // function to display movie posters in UI
 function displayMovie(movieArray) {
+  posterSubContainer.innerHTML = "";
+
   movieArray.forEach(function (movieDetails, index) {
     // console.log(movieDetails);
     const posterMainDiv = document.createElement("div");
@@ -66,14 +68,83 @@ function displayMovie(movieArray) {
       "justify-between",
       "rounded-lg"
     );
-    posterImageDiv.classList.add("border-2", "border-blue-500", "h-72","rounded-lg");
-    posterDetailsDiv.classList.add("border-2", "border-green-500", "h-28","rounded-lg");
+    posterImageDiv.classList.add(
+      "border-2",
+      "border-blue-500",
+      "h-60",
+      "rounded-lg"
+    );
+    posterDetailsDiv.classList.add(
+      "border-2",
+      "border-green-500",
+      "h-40",
+      "rounded-lg",
+      "px-2",
+      "bg-slate-100",
+      "relative"
+    );
 
     // image tag for movie posters
     const imgTag = document.createElement("img");
     imgTag.src = movieDetails.Poster;
-    imgTag.classList.add("h-full", "w-full","rounded-lg");
+    imgTag.classList.add("h-full", "w-full", "rounded-lg");
     posterImageDiv.append(imgTag);
+
+    // movie title
+    const pTag_movie_title = document.createElement("p");
+    pTag_movie_title.textContent = movieDetails.Title;
+    pTag_movie_title.classList.add(
+      "font-bold",
+      "italic",
+      "text-fuchsia-600",
+      "text-lg"
+    );
+
+    // release date of movie
+    const spanTag_releaseDate_text = document.createElement("span");
+    spanTag_releaseDate_text.textContent = "RELEASE DATE: ";
+    spanTag_releaseDate_text.classList.add(
+      "text-sm",
+      "italic",
+      "text-fuchsia-600"
+    );
+
+    const spanTag_releaseDate_from_API = document.createElement("span");
+    spanTag_releaseDate_from_API.textContent = movieDetails.Year;
+    spanTag_releaseDate_from_API.classList.add(
+      "text-sm",
+      "italic",
+      "text-emerald-600"
+    );
+
+    // enclosing the imdb rating into a box
+    const imdb_div = document.createElement("div");
+    imdb_div.classList.add("border-2", "border-red-500", "flex", "h-[2rem]");
+
+    // IMDB rating by genrating random numbers
+    const imdb_rating_text = document.createElement("span");
+    imdb_rating_text.textContent = "IMDB: ";
+    imdb_rating_text.classList.add(
+      "text-sm",
+      "italic",
+      "text-emerald-600",
+      "font-semibold",
+      "flex",
+      "justify-start"
+    );
+
+    const imdb_rating_randomNumbers = document.createElement("span");
+    imdb_rating_randomNumbers.textContent = Math.round(Math.random() * 10);
+    imdb_rating_randomNumbers.classList.add("text-sm", "text-emerald-600");
+
+    imdb_div.append(imdb_rating_text, imdb_rating_randomNumbers);
+
+    posterDetailsDiv.append(
+      pTag_movie_title,
+      spanTag_releaseDate_text,
+      spanTag_releaseDate_from_API,
+      imdb_div
+    );
 
     posterMainDiv.append(posterImageDiv, posterDetailsDiv);
     posterSubContainer.append(posterMainDiv);
