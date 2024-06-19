@@ -7,21 +7,22 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
   </head>
-  <body>
+  <body class="bg-black">
     <!-- search bar main container -->
     <div class="search-mainContainer border-2 border-red-500 h-[10vh]">
       <!-- input search bar container -->
       <div
-        class="input-searchBarContainer border-2 border-blue-500 mx-auto h-full w-[60%] flex justify-between"
+        class="input-searchBarContainer border-2 border-blue-500 mx-auto h-full w-[60%] flex justify-between shadow-md"
       >
         <!-- input search field -->
-        <div class="input-search border-2 border-green-500 h-full w-[80%]">
+        <div class="input-search border-2 border-green-500 h-full w-[80%] relative">
           <input
-            class="border-2 border-red-500 h-full w-full rounded-md bg-gray-100"
+            class="border-2 border-red-500 bg-black h-full w-full rounded-md text-2xl text-white"
             id="searchBar"
             type="text"
             placeholder="Enter movie name"
           />
+          <i class="clear-search lni lni-cross-circle absolute top-[0.3rem] right-[2rem] text-4xl text-red-500 cursor-pointer"></i>
         </div>
         <!-- search icon -->
         <div
@@ -32,11 +33,23 @@
           ></i>
         </div>
       </div>
+      <!-- heading -->
+      <div
+        class="heading-container border-2 border-green-500 h-[8vh] flex justify-center"
+      >
+        <h3 class="text-2xl text-emerald-500 italic p-2 font-semibold">
+          List of Movies
+        </h3>
+      </div>
     </div>
     <!-- display movie posters -->
-     <div class="movie-poster-container border-2 border-blue-500 mt-[3rem] min-h-[10vh]">
-      <div class="poster-subContainer border-2 border-red-500 h-full w-full grid grid-rows-auto grid-cols-4 gap-4 p-2"></div>
-     </div>
+    <div
+      class="movie-poster-container border-2 border-blue-500 mt-[3rem] min-h-[10vh]"
+    >
+      <div
+        class="poster-subContainer border-2 border-red-500 h-full w-full grid grid-rows-auto grid-cols-4 gap-4 p-2"
+      ></div>
+    </div>
   </body>
 </html>
 <script src="./index.js"></script>

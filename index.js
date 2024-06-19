@@ -9,6 +9,7 @@ const searchBar = document.getElementById("searchBar");
 const searchIcon = document.querySelector(".search-icon");
 const moviePosterContainer = document.querySelector(".movie-poster-container");
 const posterSubContainer = document.querySelector(".poster-subContainer");
+const clearSearch = document.querySelector(".clear-search");
 
 // adding click event for the search icon
 searchIcon.addEventListener("click", searchMovie);
@@ -66,7 +67,8 @@ function displayMovie(movieArray) {
       "flex",
       "flex-col",
       "justify-between",
-      "rounded-lg"
+      "rounded-lg",
+      "shadow-xl"
     );
     posterImageDiv.classList.add(
       "border-2",
@@ -150,3 +152,10 @@ function displayMovie(movieArray) {
     posterSubContainer.append(posterMainDiv);
   });
 }
+
+// adding click event for clear search icon to remove the movies once clicked
+clearSearch.addEventListener("click",function(){
+  posterSubContainer.innerHTML = "";
+})
+
+
