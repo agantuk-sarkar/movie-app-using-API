@@ -9,20 +9,26 @@
   </head>
   <body class="bg-black">
     <!-- search bar main container -->
-    <div class="search-mainContainer border-2 border-red-500 h-[10vh]">
+    <div
+      class="search-mainContainer border-2 border-red-500 h-[10vh] sticky top-0 z-[99999]"
+    >
       <!-- input search bar container -->
       <div
         class="input-searchBarContainer border-2 border-blue-500 mx-auto h-full w-[60%] flex justify-between shadow-md"
       >
         <!-- input search field -->
-        <div class="input-search border-2 border-green-500 h-full w-[80%] relative">
+        <div
+          class="input-search border-2 border-green-500 h-full w-[80%] relative"
+        >
           <input
             class="border-2 border-red-500 bg-black h-full w-full rounded-md text-2xl text-white"
             id="searchBar"
             type="text"
             placeholder="Enter movie name"
           />
-          <i class="clear-search lni lni-cross-circle absolute top-[0.3rem] right-[2rem] text-4xl text-red-500 cursor-pointer"></i>
+          <i
+            class="clear-search lni lni-cross-circle absolute top-[0.3rem] right-[2rem] text-4xl text-red-500 cursor-pointer"
+          ></i>
         </div>
         <!-- search icon -->
         <div
@@ -37,9 +43,9 @@
       <div
         class="heading-container border-2 border-green-500 h-[8vh] flex justify-center"
       >
-        <h3 class="text-2xl text-emerald-500 italic p-2 font-semibold">
-          List of Movies
-        </h3>
+        <h3
+          class="headingTag text-2xl text-emerald-500 italic p-2 font-semibold"
+        ></h3>
       </div>
     </div>
     <!-- display movie posters -->
@@ -48,6 +54,22 @@
     >
       <div
         class="poster-subContainer border-2 border-red-500 h-full w-full grid grid-rows-auto grid-cols-4 gap-4 p-2"
+      ></div>
+    </div>
+    <!-- recommended heading -->
+    <div
+      class="recommended-header border-2 border-green-600 mt-[1rem] h-[7vh] flex justify-center"
+    >
+      <h3
+        class="recommend-heading text-2xl text-emerald-500 italic p-2 font-semibold"
+      ></h3>
+    </div>
+    <!-- recommended movies -->
+    <div
+      class="recommended-movie-container border-2 border-blue-600 mt-[2rem] min-h-[10vh]"
+    >
+      <div
+        class="recommended-movie-subContainer border-2 border-red-500 h-full w-full grid grid-rows-auto grid-cols-4 gap-4 p-2"
       ></div>
     </div>
   </body>

@@ -10,6 +10,11 @@ const searchIcon = document.querySelector(".search-icon");
 const moviePosterContainer = document.querySelector(".movie-poster-container");
 const posterSubContainer = document.querySelector(".poster-subContainer");
 const clearSearch = document.querySelector(".clear-search");
+const headingTag = document.querySelector(".headingTag");
+const recommendedHeading = document.querySelector(".recommend-heading");
+const recommendedMovieSubContainer = document.querySelector(
+  ".recommended-movie-subContainer"
+);
 
 // adding click event for the search icon
 searchIcon.addEventListener("click", searchMovie);
@@ -43,6 +48,7 @@ function fetchMovieApi(searchUrlForMovie) {
       console.log("data:", data.Search);
       let movieArray = data.Search;
       displayMovie(movieArray);
+      recommendedMovies(movieArray);
     })
     .catch(function (error) {
       console.log("error:", error);
@@ -154,8 +160,123 @@ function displayMovie(movieArray) {
 }
 
 // adding click event for clear search icon to remove the movies once clicked
-clearSearch.addEventListener("click",function(){
+clearSearch.addEventListener("click", function () {
   posterSubContainer.innerHTML = "";
-})
+  recommendedMovieSubContainer.innerHTML = "";
+  headingTag.textContent = "";
+  recommendedHeading.textContent = "";
+});
 
+// using setTimeout to show the list of movies header
+setTimeout(function () {
+  headingTag.textContent = "List of Movies";
+}, 3000);
 
+// function to show recommended movies
+function recommendedMovies(recommendedMovies) {
+  recommendedMovieSubContainer.innerHTML = "";
+  // console.log(recommendedMovies);
+  setTimeout(function () {
+    recommendedMovies.forEach(function (recommendMovieObject, index) {
+      const recommendMainDiv = document.createElement("div");
+      const recommendImageDiv = document.createElement("div");
+      const recommendDetailsDiv = document.createElement("div");
+
+      recommendMainDiv.classList.add(
+        "border-2",
+        "border-red-500",
+        "h-full",
+        "w-60",
+        "flex",
+        "flex-col",
+        "justify-between",
+        "rounded-lg",
+        "shadow-xl"
+      );
+      recommendImageDiv.classList.add(
+        "border-2",
+        "border-blue-500",
+        "h-60",
+        "rounded-lg"
+      );
+      recommendDetailsDiv.classList.add(
+        "border-2",
+        "border-green-500",
+        "h-40",
+        "rounded-lg",
+        "px-2",
+        "bg-slate-100",
+        "relative"
+      );
+
+      // image tag for recommended movie
+      const imgTag = document.createElement("img");
+      imgTag.src = recommendMovieObject.Poster;
+      imgTag.classList.add("h-full", "w-full", "rounded-lg");
+      recommendImageDiv.append(imgTag);
+
+      // recommended movie title
+      const pTag_movie_title = document.createElement("p");
+      pTag_movie_title.textContent = recommendMovieObject.Title;
+      pTag_movie_title.classList.add(
+        "font-bold",
+        "italic",
+        "text-fuchsia-600",
+        "text-lg"
+      );
+
+      // release date of recommended movie
+      const spanTag_releaseDate_text = document.createElement("span");
+      spanTag_releaseDate_text.textContent = "RELEASE DATE: ";
+      spanTag_releaseDate_text.classList.add(
+        "text-sm",
+        "italic",
+        "text-fuchsia-600"
+      );
+
+      const spanTag_releaseDate_from_API = document.createElement("span");
+      spanTag_releaseDate_from_API.textContent = recommendMovieObject.Year;
+      spanTag_releaseDate_from_API.classList.add(
+        "text-sm",
+        "italic",
+        "text-emerald-600"
+      );
+
+      // enclosing the imdb rating into a box
+      const imdb_div = document.createElement("div");
+      imdb_div.classList.add("border-2", "border-red-500", "flex", "h-[2rem]");
+
+      // IMDB rating by genrating random numbers
+      const imdb_rating_text = document.createElement("span");
+      imdb_rating_text.textContent = "IMDB: ";
+      imdb_rating_text.classList.add(
+        "text-sm",
+        "italic",
+        "text-emerald-600",
+        "font-semibold",
+        "flex",
+        "justify-start"
+      );
+
+      const imdb_rating_randomNumbers = document.createElement("span");
+      imdb_rating_randomNumbers.textContent = Math.round(Math.random() * 10);
+      imdb_rating_randomNumbers.classList.add("text-sm", "text-emerald-600");
+
+      imdb_div.append(imdb_rating_text, imdb_rating_randomNumbers);
+
+      if (imdb_rating_randomNumbers.textContent >= 2) {
+        recommendedHeading.textContent = "Recommended Movies";
+
+        recommendDetailsDiv.append(
+          pTag_movie_title,
+          spanTag_releaseDate_text,
+          spanTag_releaseDate_from_API,
+          imdb_div
+        );
+
+        recommendMainDiv.append(recommendImageDiv, recommendDetailsDiv);
+        recommendedMovieSubContainer.append(recommendMainDiv);
+      }
+    });
+  }, 6000);
+}
