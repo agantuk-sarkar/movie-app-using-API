@@ -7,11 +7,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
   </head>
-  <body class="bg-black">
+  <body>
     <!-- search bar main container -->
     <div
-      class="search-mainContainer border-2 border-red-500 h-[10vh] sticky top-0 z-[99999]"
+      class="search-mainContainer border-2 border-red-500 h-[10vh] flex sticky top-0 bg-blue-600 z-[99999] rounded-lg shadow-md"
     >
+      <!-- image for movie icon -->
+      <div class="movie-icon border-2 border-teal-500 h-full w-[10%] rounded-lg">
+        <img
+          class="h-full w-full rounded-lg"
+          src="https://static.thenounproject.com/png/780081-200.png"
+        />
+      </div>
       <!-- input search bar container -->
       <div
         class="input-searchBarContainer border-2 border-blue-500 mx-auto h-full w-[60%] flex justify-between shadow-md"
@@ -39,18 +46,18 @@
           ></i>
         </div>
       </div>
-      <!-- heading -->
-      <div
-        class="heading-container border-2 border-green-500 h-[8vh] flex justify-center"
-      >
-        <h3
-          class="headingTag text-2xl text-emerald-500 italic p-2 font-semibold"
-        ></h3>
-      </div>
+    </div>
+    <!-- heading -->
+    <div
+      class="heading-container border-2 border-green-500 h-[8vh] flex justify-center mt-[2rem]"
+    >
+      <h3
+        class="headingTag text-2xl text-emerald-500 italic p-2 font-semibold"
+      ></h3>
     </div>
     <!-- display movie posters -->
     <div
-      class="movie-poster-container border-2 border-blue-500 mt-[3rem] min-h-[10vh]"
+      class="movie-poster-container border-2 border-blue-500 mt-[2rem] min-h-[10vh]"
     >
       <div
         class="poster-subContainer border-2 border-red-500 h-full w-full grid grid-rows-auto grid-cols-4 gap-4 p-2"

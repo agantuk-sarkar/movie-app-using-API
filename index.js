@@ -147,6 +147,8 @@ function displayMovie(movieArray) {
 
     imdb_div.append(imdb_rating_text, imdb_rating_randomNumbers);
 
+    headingTag.textContent = "List of Movies";
+
     posterDetailsDiv.append(
       pTag_movie_title,
       spanTag_releaseDate_text,
@@ -170,7 +172,7 @@ clearSearch.addEventListener("click", function () {
 // using setTimeout to show the list of movies header
 setTimeout(function () {
   headingTag.textContent = "List of Movies";
-}, 3000);
+}, 4000);
 
 // function to show recommended movies
 function recommendedMovies(recommendedMovies) {
@@ -278,5 +280,5 @@ function recommendedMovies(recommendedMovies) {
         recommendedMovieSubContainer.append(recommendMainDiv);
       }
     });
-  }, 6000);
+  }, 5000);
 }
