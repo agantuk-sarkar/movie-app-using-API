@@ -163,10 +163,11 @@ function displayMovie(movieArray) {
 
 // adding click event for clear search icon to remove the movies once clicked
 clearSearch.addEventListener("click", function () {
-  posterSubContainer.innerHTML = "";
-  recommendedMovieSubContainer.innerHTML = "";
-  headingTag.textContent = "";
-  recommendedHeading.textContent = "";
+  // posterSubContainer.innerHTML = "";
+  // recommendedMovieSubContainer.innerHTML = "";
+  // headingTag.textContent = "";
+  // recommendedHeading.textContent = "";
+  searchBar.value = null;
 });
 
 // using setTimeout to show the list of movies header
