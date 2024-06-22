@@ -19,7 +19,7 @@ const recommendedMovieSubContainer = document.querySelector(
 // adding click event for the search icon
 searchIcon.addEventListener("click", searchMovie);
 
-// function for setting the title of the movie using click event
+// function for setting the title of the movie from the input search field
 function searchMovie() {
   if (searchBar.value) {
     search = searchBar.value;
@@ -29,7 +29,7 @@ function searchMovie() {
   }
 }
 
-// function to use the movie name in the url by searching which will be called in click event
+// function to use the movie name in the url by searching using the input search field value
 function setMovieName(searchName) {
   let searchUrl = `${baseUrl}&s=${searchName}&plot=full`;
   if (searchUrl) {
@@ -174,7 +174,7 @@ clearSearch.addEventListener("click", function () {
 //   headingTag.textContent = "List of Movies";
 // }, 4000);
 
-// function to show recommended movies
+// function to show recommended movies in UI
 function recommendedMovies(recommendedMovies) {
   recommendedMovieSubContainer.innerHTML = "";
   // console.log(recommendedMovies);
@@ -266,7 +266,8 @@ function recommendedMovies(recommendedMovies) {
 
       imdb_div.append(imdb_rating_text, imdb_rating_randomNumbers);
 
-      if (imdb_rating_randomNumbers.textContent >= 2) {
+      // condition to check if IMDB rating is greater than 3, then show the movie posters
+      if (imdb_rating_randomNumbers.textContent >= 3) {
         recommendedHeading.textContent = "Recommended Movies";
 
         recommendDetailsDiv.append(
