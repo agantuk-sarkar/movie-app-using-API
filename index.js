@@ -170,9 +170,9 @@ clearSearch.addEventListener("click", function () {
 });
 
 // using setTimeout to show the list of movies header
-setTimeout(function () {
-  headingTag.textContent = "List of Movies";
-}, 4000);
+// setTimeout(function () {
+//   headingTag.textContent = "List of Movies";
+// }, 4000);
 
 // function to show recommended movies
 function recommendedMovies(recommendedMovies) {
@@ -280,5 +280,5 @@ function recommendedMovies(recommendedMovies) {
         recommendedMovieSubContainer.append(recommendMainDiv);
       }
     });
-  }, 5000);
+  }, 4000);
 }
