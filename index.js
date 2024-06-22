@@ -2,7 +2,6 @@
 const apiKey = "13749ecc";
 let search = null;
 const baseUrl = `http://www.omdbapi.com/?apikey=${apiKey}`;
-// console.log(baseUrl);
 
 // getting the html elements into js
 const searchBar = document.getElementById("searchBar");
@@ -166,10 +165,6 @@ function displayMovie(movieArray) {
 
 // adding click event for clear search icon to remove the movies once clicked
 clearSearch.addEventListener("click", function () {
-  // posterSubContainer.innerHTML = "";
-  // recommendedMovieSubContainer.innerHTML = "";
-  // headingTag.textContent = "";
-  // recommendedHeading.textContent = "";
   searchBar.value = null;
 });
 
