@@ -29,7 +29,7 @@ function searchMovie() {
   }
 }
 
-// function to use the movie name in the url by searching using the input search field value
+// function to use the set movie name in the url from the input search field
 function setMovieName(searchName) {
   let searchUrl = `${baseUrl}&s=${searchName}&plot=full`;
   if (searchUrl) {
@@ -41,12 +41,16 @@ function setMovieName(searchName) {
 function fetchMovieApi(searchUrlForMovie) {
   fetch(searchUrlForMovie)
     .then(function (response) {
-      return response.json();
+      if(response.ok){
+        return response.json();
+      } else {
+        throw new Error("Invalid URL");
+      }
     })
     .then(function (data) {
       // console.log("data:",data);
       console.log("data:", data.Search);
-      let movieArray = data.Search;
+      let movieArray = data?.Search;
       displayMovie(movieArray);
       recommendedMovies(movieArray);
     })
@@ -59,7 +63,7 @@ function fetchMovieApi(searchUrlForMovie) {
 function displayMovie(movieArray) {
   posterSubContainer.innerHTML = "";
 
-  movieArray.forEach(function (movieDetails, index) {
+  movieArray?.forEach(function (movieDetails, index) {
     // console.log(movieDetails);
     const posterMainDiv = document.createElement("div");
     const posterImageDiv = document.createElement("div");
@@ -69,7 +73,6 @@ function displayMovie(movieArray) {
       "border-2",
       "border-red-500",
       "h-full",
-      "w-60",
       "flex",
       "flex-col",
       "justify-between",
@@ -170,17 +173,12 @@ clearSearch.addEventListener("click", function () {
   searchBar.value = null;
 });
 
-// using setTimeout to show the list of movies header
-// setTimeout(function () {
-//   headingTag.textContent = "List of Movies";
-// }, 4000);
-
 // function to show recommended movies in UI
 function recommendedMovies(recommendedMovies) {
   recommendedMovieSubContainer.innerHTML = "";
   // console.log(recommendedMovies);
   setTimeout(function () {
-    recommendedMovies.forEach(function (recommendMovieObject, index) {
+    recommendedMovies?.forEach(function (recommendMovieObject, index) {
       const recommendMainDiv = document.createElement("div");
       const recommendImageDiv = document.createElement("div");
       const recommendDetailsDiv = document.createElement("div");
@@ -189,7 +187,6 @@ function recommendedMovies(recommendedMovies) {
         "border-2",
         "border-red-500",
         "h-full",
-        "w-60",
         "flex",
         "flex-col",
         "justify-between",
@@ -282,5 +279,5 @@ function recommendedMovies(recommendedMovies) {
         recommendedMovieSubContainer.append(recommendMainDiv);
       }
     });
-  }, 4000);
+  }, 3000);
 }
