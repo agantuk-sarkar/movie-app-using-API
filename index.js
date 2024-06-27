@@ -47,8 +47,6 @@ function fetchMovieApi(searchUrlForMovie) {
       }
     })
     .then(function (data) {
-      // console.log("data:",data);
-      console.log("data:", data.Search);
       let movieArray = data?.Search;
       displayMovie(movieArray);
       recommendedMovies(movieArray);
@@ -63,14 +61,12 @@ function displayMovie(movieArray) {
   posterSubContainer.innerHTML = "";
 
   movieArray?.forEach(function (movieDetails, index) {
-    // console.log(movieDetails);
     const posterMainDiv = document.createElement("div");
     const posterImageDiv = document.createElement("div");
     const posterDetailsDiv = document.createElement("div");
 
     posterMainDiv.classList.add(
-      "border-2",
-      "border-red-500",
+      "border-transparent",
       "h-full",
       "flex",
       "flex-col",
@@ -78,15 +74,9 @@ function displayMovie(movieArray) {
       "rounded-lg",
       "shadow-xl"
     );
-    posterImageDiv.classList.add(
-      "border-2",
-      "border-blue-500",
-      "h-60",
-      "rounded-lg"
-    );
+    posterImageDiv.classList.add("border-transparent", "h-60", "rounded-lg");
     posterDetailsDiv.classList.add(
-      "border-2",
-      "border-green-500",
+      "border-transparent",
       "h-40",
       "rounded-lg",
       "px-2",
@@ -129,7 +119,7 @@ function displayMovie(movieArray) {
 
     // enclosing the imdb rating into a box
     const imdb_div = document.createElement("div");
-    imdb_div.classList.add("border-2", "border-red-500", "flex", "h-[2rem]");
+    imdb_div.classList.add("border-transparent", "flex", "h-[2rem]");
 
     // IMDB rating by genrating random numbers
     const imdb_rating_text = document.createElement("span");
@@ -171,7 +161,7 @@ clearSearch.addEventListener("click", function () {
 // function to show recommended movies in UI
 function recommendedMovies(recommendedMovies) {
   recommendedMovieSubContainer.innerHTML = "";
-  // console.log(recommendedMovies);
+
   setTimeout(function () {
     recommendedMovies?.forEach(function (recommendMovieObject, index) {
       const recommendMainDiv = document.createElement("div");
@@ -179,8 +169,7 @@ function recommendedMovies(recommendedMovies) {
       const recommendDetailsDiv = document.createElement("div");
 
       recommendMainDiv.classList.add(
-        "border-2",
-        "border-red-500",
+        "border-transparent",
         "h-full",
         "flex",
         "flex-col",
@@ -189,14 +178,12 @@ function recommendedMovies(recommendedMovies) {
         "shadow-xl"
       );
       recommendImageDiv.classList.add(
-        "border-2",
-        "border-blue-500",
+        "border-transparent",
         "h-60",
         "rounded-lg"
       );
       recommendDetailsDiv.classList.add(
-        "border-2",
-        "border-green-500",
+        "border-transparent",
         "h-40",
         "rounded-lg",
         "px-2",
@@ -239,7 +226,7 @@ function recommendedMovies(recommendedMovies) {
 
       // enclosing the imdb rating into a box
       const imdb_div = document.createElement("div");
-      imdb_div.classList.add("border-2", "border-red-500", "flex", "h-[2rem]");
+      imdb_div.classList.add("border-transparent", "flex", "h-[2rem]");
 
       // IMDB rating by genrating random numbers
       const imdb_rating_text = document.createElement("span");
