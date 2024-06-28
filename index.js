@@ -1,7 +1,7 @@
 // using online API key and URL
 const apiKey = "13749ecc";
 let search = null;
-const baseUrl = `http://www.omdbapi.com/?apikey=${apiKey}`;
+const baseUrl = `https://www.omdbapi.com/?apikey=${apiKey}`;
 
 // getting the html elements into js
 const searchBar = document.getElementById("searchBar");
